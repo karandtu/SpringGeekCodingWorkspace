@@ -1,0 +1,48 @@
+public class SpringBeanFacesELResolver extends ELResolver{
+}
+
+
+The JSF ELResolver that delegates to the Spring root WebApplicationContext, resolving name references to 
+the Spring Defined Beans.
+
+Configure your ELResolver inside config-faces.xml
+
+<application>
+  <el-resolver>org.springframework.web.jsf.el.SpringBeansFacesELResolver</el-resolver>
+</application>
+
+
+All your JSF expressions can then implicitly refer to the names of the defined Spring Service-Layer beans or 
+Spring beans simply.
+for example the property value inside the JSF Expression of the managed bean.
+
+
+<managed-bean>
+   <managed-bean-name>mySpringJSFManagedBean</managed-bean-name>
+   <managed-bean-class>example.MySpringJSFManagedBean</managed-bean-class>
+   <managed-bean-scope>session</managed-bean-scope>
+   
+   <managed-property>
+        <property-name>mySpringJSFManagedBeanBusinessObject</property-name>
+        <value>#{mySpringJSFManagedBeanBusinessObject}</value
+   </managed-property>
+
+</managed-bean>
+
+applicationContext.xml file:
+<bean id = "mySpringJSFManagedBeanBusinessObject" class = example.MySpringJSFManagedBeanBusinessObject></bean>
+THIS IS CALLED XML BASED 
+
+
+THIS IS CALLED JAVA ANNOTATION BASED
+
+
+@ManagedProperty(value = "#{mySpringJSFManagedBeanBusinessObject}")
+@ViewScoped
+public class MySpringJSFManagedBeanBusinessObject {
+}
+
+THIS IS HOW WE RESOLVE MANAGED BEANS FROM JSF PAGE.
+
+
+ 

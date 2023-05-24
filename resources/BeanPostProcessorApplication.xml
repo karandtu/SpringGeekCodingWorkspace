@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+  <bean id = "customBeanPostProcessorTester" class = "com.springmpdules.springcoding.CustomBeanPostProcessorTester"></bean>
+  <bean id = "invoiceCreationImplementation"  init-method= "initBean"
+   destroy-method = "destroyBean" class  ="com.springmodules.springcoding.InvoiceCreationImplementation" ></bean>
+</beans>
